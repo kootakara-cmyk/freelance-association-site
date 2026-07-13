@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本フリーランス協会 ｜ 活動記録</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root{
+    /* ===== ベース：アカデミック紙面 ===== */
+    --bg:#F7F5EF;
+    --bg-panel:#FFFFFF;
+    --ink:#232019;
+    --ink-soft:#5C5749;
+    --ink-faint:#8C8577;
+    --border:#DCD5C4;
+
+    /* ===== 青空（自由性の象徴）：基調色 ===== */
+    --sky:#3E7CA6;
+    --sky-soft:#7FADCE;
+    --sky-pale:#E4EEF5;
+
+    /* ===== ノブレス・オブリージュ：金・深紺のアクセント ===== */
+    --noble-gold:#A9832E;
+    --noble-navy:#1F2E45;
+
+    /* ===== 役割別エイリアス（既存構造との互換） ===== */
+    --accent:var(--noble-navy);
+    --accent-soft:var(--sky-soft);
+    --law:var(--sky);
+
+    --font-serif:'Noto Serif JP', serif;
+    --font-sans:'Noto Sans JP', sans-serif;
+    --font-en:'EB Garamond', serif;
+    --font-en-sans:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+
+    /* ===== ランク別トークン ===== */
+    --r1-size: clamp(1.5rem, 4.5vw, 2.1rem);
+    --r1-weight: 700;
+    --r1-color: var(--ink);
+
+    --r2-size: 1.15rem;
+    --r2-weight: 600;
+    --r2-color: var(--ink);
+
+    --r3-size: 0.95rem;
+    --r3-weight: 400;
+    --r3-color: var(--ink);
+    --r3-border: var(--sky);
+
+    --r4-size: 0.9rem;
+    --r4-weight: 400;
+    --r4-color: var(--ink-soft);
+    --r4-border: var(--noble-gold);
+
+    --r5-size: 0.8rem;
+    --r5-weight: 400;
+    --r5-color: var(--ink-faint);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-sans);
+    line-height:1.8;
+  }
+  ul, ol{ list-style:none; }
+
+  /* ============ DOMAIN TITLE（認知事項） ============ */
+  .domain-title{
+    text-align:center;
+    padding:1.5rem 1.5rem 0.75rem;
+    border-bottom:1px solid var(--border);
+  }
+  .domain-name{
+    display:block;
+    font-family:var(--font-en);
+    font-style:italic;
+    font-weight:600;
+    font-size:1.1rem;
+    color:var(--noble-navy);
+    letter-spacing:0.02em;
+  }
+  .domain-sub{
+    display:block;
+    font-family:var(--font-mono);
+    font-size:0.65rem;
+    color:var(--ink-faint);
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    margin-top:0.35rem;
+  }
+
+  /* ============ LANGUAGE SWITCHER ============ */
+  .lang-switcher{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    padding:0.9rem 1rem;
+    border-bottom:1px solid var(--border);
+  }
+  .lang-btn{
+    font-family:var(--font-en-sans);
+    font-size:0.72rem;
+    padding:5px 14px;
+    border:1px solid var(--border);
+    border-radius:999px;
+    background:none;
+    color:var(--ink-soft);
+    cursor:pointer;
+    transition:all .15s;
+  }
+  .lang-btn.active{
+    background:var(--noble-navy);
+    border-color:var(--noble-navy);
+    color:#fff;
+  }
+  .lang-btn:hover:not(.active){ border-color:var(--sky); color:var(--sky); }
+  .lang-btn.lang-more{ font-family:var(--font-en-sans); }
+
+  /* ============ HERO / RANK 1 ============ */
+  .hero{
+    min-height:60vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:3rem 1.5rem;
+    max-width:680px;
+    margin:0 auto;
+    border-bottom:1px solid var(--border);
+  }
+  .hero .eyebrow{
+    font-family:var(--font-en-sans);
+    font-size:0.7rem;
+    color:var(--sky);
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    margin-bottom:1.5rem;
+  }
+  .rank1{
+    font-family:var(--font-en);
+    font-style:italic;
+    font-size:var(--r1-size);
+    font-weight:var(--r1-weight);
+    color:var(--r1-color);
+    line-height:1.6;
+  }
+  .rank1 .jp{
+    display:block;
+    font-family:var(--font-serif);
+    font-style:normal;
+    font-size:0.6em;
+    color:var(--ink-soft);
+    margin-top:0.7rem;
+    font-weight:600;
+  }
+
+  /* ============ CHAPTER / RANK 2 ============ */
+  .chapter{
+    max-width:680px;
+    margin:0 auto;
+    padding:3.5rem 1.5rem;
+    border-bottom:1px solid var(--border);
+  }
+  .chapter-head{
+    display:flex;
+    align-items:baseline;
+    gap:1rem;
+    margin-bottom:1.8rem;
+  }
+  .chapter-num{
+    font-family:var(--font-mono);
+    font-size:0.85rem;
+    color:var(--accent);
+    border:1px solid var(--accent);
+    border-radius:2px;
+    padding:2px 8px;
+  }
+  .rank2{
+    font-family:var(--font-en);
+    font-style:italic;
+    font-size:var(--r2-size);
+    font-weight:600;
+  }
+  .rank2 .jp{
+    display:block;
+    font-family:var(--font-serif);
+    font-style:normal;
+    font-size:0.72rem;
+    color:var(--ink-soft);
+    font-weight:600;
+    margin-top:3px;
+  }
+
+  /* ============ SOURCE TAG ============ */
+  .src-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:var(--font-mono);
+    font-size:0.65rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    margin-bottom:0.6rem;
+  }
+  .src-tag.archive{ color:var(--law); }
+  .src-tag.provided{ color:var(--accent-soft); }
+  .src-tag::before{ content:"●"; font-size:0.6rem; }
+
+  /* ============ RANK 3: アーカイブ一次情報 ============ */
+  .rank3-block{
+    border-left:2px solid var(--r3-border);
+    padding-left:1.2rem;
+    margin-bottom:1.8rem;
+  }
+  .rank3-block ul{
+    display:flex;
+    flex-direction:column;
+    gap:0.55rem;
+  }
+  .rank3-block li{
+    font-size:var(--r3-size);
+    font-weight:var(--r3-weight);
+    color:var(--r3-color);
+    position:relative;
+    padding-left:1rem;
+  }
+  .rank3-block li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--law);
+  }
+  .rank3-block li ul{
+    margin-top:0.4rem;
+    padding-left:1.2rem;
+    gap:0.35rem;
+  }
+  .rank3-block li li{ font-size:0.9em; color:var(--ink-soft); }
+  .rank3-block li li::before{ content:"·"; color:var(--ink-faint); }
+
+  /* ============ 箇条書き内 英日併記（本文はゴシック体で統一） ============ */
+  .li-jp{
+    display:block;
+    font-size:0.88em;
+    color:var(--ink-faint);
+    margin-top:2px;
+  }
+  .li-jp::before{ content:"／ "; }
+
+  /* ============ RANK 4: 関係者提供情報 ============ */
+  .rank4-block{
+    border-left:2px solid var(--r4-border);
+    padding-left:1.2rem;
+    margin-bottom:1.8rem;
+  }
+  .rank4-block ul{
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+  }
+  .rank4-block li{
+    font-size:var(--r4-size);
+    font-weight:var(--r4-weight);
+    color:var(--r4-color);
+    position:relative;
+    padding-left:1rem;
+  }
+  .rank4-block li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--accent);
+  }
+  .rank4-block li ul{
+    margin-top:0.4rem;
+    padding-left:1.2rem;
+    gap:0.3rem;
+  }
+  .rank4-block li li{ font-size:0.92em; color:var(--ink-faint); }
+  .rank4-block li li::before{ content:"·"; }
+
+  /* ============ DETAIL DISCLOSURE（折りたたみ = 当事者記録、action-btnと同列表現） ============ */
+  details.detail-box{
+    margin-top:0.6rem;
+  }
+  details.detail-box summary{
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    border:1px solid var(--noble-gold);
+    color:var(--noble-gold);
+    border-radius:2px;
+    padding:6px 16px;
+    font-size:0.78rem;
+    list-style:none;
+    user-select:none;
+    transition:background .15s;
+  }
+  details.detail-box summary:hover{ background:#F7EFDD; color:var(--noble-gold); }
+  details.detail-box summary .en{ font-family:var(--font-en-sans); }
+  details.detail-box summary .jp{ font-family:var(--font-sans); font-size:0.9em; color:var(--ink-faint); }
+  details.detail-box summary .jp::before{ content:"／ "; }
+  details.detail-box summary::-webkit-details-marker{ display:none; }
+  details.detail-box summary::before{
+    content:"▸";
+    font-size:0.65rem;
+    transition:transform .15s;
+  }
+  details.detail-box[open] summary::before{ transform:rotate(90deg); }
+  .detail-text{
+    margin-top:0.6rem;
+    padding:0.9rem 1.1rem;
+    background:var(--bg-panel);
+    border-radius:3px;
+    font-family:var(--font-sans);
+    font-size:0.85rem;
+    line-height:2;
+    color:var(--ink-soft);
+  }
+  .detail-text .en{
+    display:block;
+    font-family:var(--font-en-sans);
+    font-size:1em;
+    color:var(--ink);
+    margin-bottom:0.7rem;
+  }
+  .detail-text .jp{
+    display:block;
+    font-family:var(--font-sans);
+    font-size:0.88em;
+    color:var(--ink-faint);
+    padding-top:0.6rem;
+    border-top:1px dotted var(--border);
+  }
+  .detail-text.tone-archive{ border-left:2px solid var(--law); }
+  .detail-text.tone-provided{ border-left:2px solid var(--noble-gold); }
+
+  /* ============ RANK 5: 解釈・俯瞰・注記 ============ */
+  .rank5{
+    font-size:var(--r5-size);
+    font-weight:var(--r5-weight);
+    color:var(--r5-color);
+    padding-left:1.2rem;
+    border-left:2px dotted var(--border);
+    margin-top:1.2rem;
+  }
+  .rank5 .label{
+    font-family:var(--font-mono);
+    font-size:0.68rem;
+    color:var(--ink-faint);
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    display:block;
+    margin-bottom:0.4rem;
+  }
+  .rank5 .en{
+    display:block;
+    font-family:var(--font-en-sans);
+    color:var(--ink-soft);
+  }
+  .rank5 .jp{
+    display:block;
+    font-family:var(--font-sans);
+    font-size:0.94em;
+    color:var(--ink-faint);
+    margin-top:0.5rem;
+    padding-top:0.5rem;
+    border-top:1px dotted var(--border);
+  }
+
+  /* ============ COMMITMENTS ============ */
+  .commitments{
+    max-width:680px;
+    margin:0 auto;
+    padding:3.5rem 1.5rem;
+  }
+  .commitments .rank2{ margin-bottom:1.5rem; }
+  .commit-list{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .commit-list li{
+    display:grid;
+    grid-template-columns:2.5rem 1fr;
+    gap:1rem;
+    padding:1.3rem 0;
+    border-bottom:1px solid var(--border);
+    font-size:0.92rem;
+    line-height:1.85;
+    text-align:left;
+  }
+  .commit-list li .idx{
+    font-family:var(--font-mono);
+    color:var(--accent);
+    font-size:0.85rem;
+  }
+
+  /* ============ ARCHIVE ENTRY ============ */
+  .archive-entry{
+    max-width:680px;
+    margin:0 auto;
+    padding:3.5rem 1.5rem;
+    border-bottom:1px solid var(--border);
+  }
+  .archive-entry .rank2{ margin-bottom:0.8rem; }
+  .archive-entry .rank5{ margin-bottom:1.5rem; }
+
+  /* ============ ACTION BUTTONS（詳細／アーカイブ、同列表現） ============ */
+  .action-row{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .action-btn{
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2px;
+    background:none;
+    border:1px solid var(--sky);
+    color:var(--sky);
+    border-radius:2px;
+    padding:10px 24px;
+    cursor:pointer;
+    font-family:var(--font-en-sans);
+    font-size:0.85rem;
+    transition:background .15s;
+  }
+  .action-btn:hover{ background:var(--sky-pale); }
+  .action-btn .jp{ font-size:0.72rem; font-family:var(--font-sans); color:var(--ink-faint); }
+
+  footer{
+    max-width:680px;
+    margin:0 auto;
+    padding:2.5rem 1.5rem 3.5rem;
+    font-size:0.72rem;
+    color:var(--ink-faint);
+  }
+
+  /* ============ MODAL ============ */
+  #archive-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.9);
+    z-index:50;
+    align-items:center;
+    justify-content:center;
+    padding:1.5rem;
+  }
+  #archive-modal.open{ display:flex; }
+  .modal-box{
+    background:var(--bg-panel);
+    border:1px solid var(--border);
+    border-radius:4px;
+    max-width:600px;
+    width:100%;
+    max-height:82vh;
+    overflow-y:auto;
+    padding:2rem 1.75rem;
+  }
+  .modal-box h3{ font-family:var(--font-serif); font-size:1.05rem; margin-bottom:1.2rem; }
+  .archive-item{
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:3px;
+    padding:1rem 1.2rem;
+    margin-bottom:0.8rem;
+  }
+  .archive-item .meta{
+    font-family:var(--font-mono);
+    font-size:0.65rem;
+    color:var(--ink-faint);
+    margin-bottom:0.4rem;
+  }
+  .archive-item p{ font-size:0.82rem; }
+  .close-btn{
+    display:block;
+    margin:1.2rem auto 0;
+    padding:6px 20px;
+    border:1px solid var(--border);
+    border-radius:2px;
+    color:var(--ink-soft);
+    cursor:pointer;
+    background:none;
+    font-family:var(--font-sans);
+    font-size:0.82rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="domain-title">
+  <span class="domain-name">Freelance-Association.Org</span>
+  <span class="domain-sub">Archive Site ／ アーカイブサイト</span>
+</div>
+
+<div class="lang-switcher">
+  <button class="lang-btn active" data-lang="en">EN</button>
+  <button class="lang-btn" data-lang="jp">日本語</button>
+  <button class="lang-btn lang-more" id="lang-more-btn">More Languages ▾</button>
+</div>
+
+<div class="hero">
+  <div class="eyebrow">Since 2008</div>
+  <div class="rank1">
+    What was privately practiced<br>came before what was publicly codified.
+    <span class="jp">私的実践が、公的制度に先行した。</span>
+  </div>
+</div>
+
+<!-- Chapter I -->
+<div class="chapter">
+  <div class="chapter-head">
+    <span class="chapter-num">I</span>
+    <div class="rank2">We Cultivated Trust<span class="jp">信頼を育てた</span></div>
+  </div>
+
+  <span class="src-tag archive">Archive Record</span>
+  <div class="rank3-block">
+    <ul>
+      <li>Founded in Minato-ku, Tokyo, 2008
+        <span class="li-jp">2008年、東京都港区にて設立</span>
+        <ul>
+          <li>Three founders: an IT executive, an accounting consultant, a licensing agent
+            <span class="li-jp">発起人3名：IT経営者・会計コンサルタント・ライセンスエージェント</span>
+          </li>
+        </ul>
+        <details class="detail-box">
+          <summary><span class="en">Testimony</span><span class="jp">当事者記録</span></summary>
+          <div class="detail-text tone-archive">
+            <span class="en">On September 1, 2008, a voluntary association was founded in Minato-ku, Tokyo, to support freelance work. Its founders were an IT company executive, a corporate accounting consultant, and a licensing agent. On September 21 of the same year, sympathetic members joined the founding group and the association applied for NPO status under the jurisdiction of the Tokyo Metropolitan Government. Participation grew among specialists — systems engineers, manga artists, designers, photographers. That November, in preparation for accepting corporate members, the association changed its articles of incorporation and its jurisdiction to the Cabinet Office, expanded its board to five directors, and opened a liaison office in Osaka. The following May, in 2009, the head office and secretariat relocated to Bunkyo-ku, Tokyo, marking the beginning of full-scale operations.</span>
+            <span class="jp">2008年9月1日、東京都港区にて、フリーランスの活動を補助する任意団体として設立された。発起人はIT企業経営者・企業会計コンサルタント・ライセンスエージェントの3名。同年9月21日には創設メンバーに賛同会員が加わり、東京都管轄のNPO申請を行った。システムエンジニア、漫画家、デザイナー、カメラマンなど専門職の参加が増加している。同年11月、企業会員の登録受け入れにあたり、定款変更および管轄を内閣府へ変更申請、理事数を5名に増員し、大阪府大阪市に連絡所を開設した。翌2009年5月、本部・事務局を東京都文京区へ移転し、活動を本格化させている。</span>
+          </div>
+        </details>
+      </li>
+      <li>Built credit guarantee and contract-agency functions as a private initiative
+        <span class="li-jp">与信保証・契約代行機能を私的に構築</span>
+        <details class="detail-box">
+          <summary><span class="en">Testimony</span><span class="jp">当事者記録</span></summary>
+          <div class="detail-text tone-archive">
+            <span class="en">In transactions between companies and individual freelancers, the association built a service, functioning as an intermediary, to guarantee contracts and payment, guarantee delivery and substitute performance, and resolve mutual questions of creditworthiness — including brokering negotiations through to contract signing and drafting the contracts themselves. Its cost-effectiveness, compared with corporate-to-corporate transactions, was positioned as a central advantage of contracting with freelancers. The function answered a real gap: at the time, Japan had no credit infrastructure for individual proprietors comparable to what existed between corporations.</span>
+            <span class="jp">企業とフリーランス個人の取引において、契約と支払の保証、納品と代替の保証、相互間の与信の解決を、中間団体として担うサービスを構築した。契約締結までの渉外、契約書の作成代行も含む。法人取引と比較した際のコストパフォーマンスの高さを、フリーランスとの契約における利点として位置づけていた。この機能は、日本国内において当時、法人取引ほどの与信の仕組みが個人事業者には整っていなかったという状況に対応するものである。</span>
+          </div>
+        </details>
+      </li>
+      <li>Membership surpassed 30,000 within roughly a year of founding
+        <span class="li-jp">設立から約1年で会員数3万人超</span>
+        <details class="detail-box">
+          <summary><span class="en">Testimony</span><span class="jp">当事者記録</span></summary>
+          <div class="detail-text tone-archive">
+            <span class="en">In August 2009, the association launched its headquarters site and a registered membership system, beginning a credit-brokering and guarantee arrangement between corporate clients and freelance members. That October brought partnerships with staffing agencies and advertising firms, and financial accounting support for individual members. In November, a liaison office was added in Minato-ku, Tokyo, and regional chapters began to take shape. By the end of December, total membership had passed 30,000, and, alongside a filing to amend the articles of incorporation, a business information site was opened.</span>
+            <span class="jp">2009年8月、本部サイトを開設し登録会員制度を開始、企業案件とフリーランス会員間の与信仲介・保証制度が始まった。同年10月、人材派遣会社・広告代理店との事業提携、個人会員への財務会計サポート業務を開始。同年11月、東京都港区に連絡所を増設し、各地方での支部制度を始めている。同年12月末時点で会員総数が3万人を超え、定款変更申請とあわせて事業サイトを開設した。</span>
+          </div>
+        </details>
+      </li>
+      <li>The credit-brokering system was implemented ahead of any public equivalent
+        <span class="li-jp">与信仲介制度、公的機関に先行して実装</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Chapter II -->
+<div class="chapter">
+  <div class="chapter-head">
+    <span class="chapter-num">II</span>
+    <div class="rank2">We Extended Beyond Borders<span class="jp">越境して展開した</span></div>
+  </div>
+
+  <span class="src-tag archive">Archive Record</span>
+  <div class="rank3-block">
+    <ul>
+      <li>Introduced an overseas chapter system
+        <span class="li-jp">海外支部制導入</span>
+        <ul>
+          <li>Locations: Tokyo, Australia, Turkey, Taiwan, the Netherlands
+            <span class="li-jp">拠点：東京・豪州・トルコ・台湾・オランダ</span>
+          </li>
+        </ul>
+        <details class="detail-box">
+          <summary><span class="en">Testimony</span><span class="jp">当事者記録</span></summary>
+          <div class="detail-text tone-archive">
+            <span class="en">In April 2012, the association began operating as a registered general incorporated association. In April 2014, it partnered with research institutes and consulting firms, launching demographic surveys of sole proprietors and small businesses, and a study correlating Japan's small-business economic zones with GDP. In April 2016 came the overseas chapter system: each territory was incorporated locally under International Accounting Standards, establishing a Japan Chapter (Tokyo), an Oceania Chapter (Australia), an East Asia Chapter (Turkey, Taiwan), and a Europe Chapter (the Netherlands), while relocating part of its head-office functions to Hong Kong. To align with each territory's local regulations, the organization's designation within Japan was changed to the "Japan Chapter."</span>
+            <span class="jp">2012年4月、一般社団法人として活動を開始。2014年4月、総合研究所・コンサルタントファームとの事業提携を開始し、自営業・中小企業における人口動態調査、国内中小事業者の生産経済圏とGDPの相関調査に着手した。2016年4月、海外支部制を開始。属地ごとに国際基準（IAS）に基づく属地団体化を行い、日本支部（東京）・オセアニア支部（オーストラリア）・東アジア支部（トルコ・台湾）・ヨーロッパ支部（オランダ）を設立、本部事務機能の一部を香港へ移した。各属地国の制度にあわせ、日本国内の活動団体としての呼称を「日本支部」に変更している。</span>
+          </div>
+        </details>
+      </li>
+      <li>Why the work extended beyond Japan's borders
+        <span class="li-jp">越境展開の理由</span>
+        <ul>
+          <li>International reciprocity among Japanese professionals working abroad
+            <span class="li-jp">海外在住日本人との国際互恵</span>
+          </li>
+          <li>Currents in advanced technology, patents, and international research
+            <span class="li-jp">先進技術・特許・国際研究の潮流</span>
+          </li>
+          <li>Fields that a purely domestic perspective could not contain
+            <span class="li-jp">国内視点に収まらない領域への対応</span>
+          </li>
+        </ul>
+        <details class="detail-box">
+          <summary><span class="en">Testimony</span><span class="jp">当事者記録</span></summary>
+          <div class="detail-text tone-archive">
+            <span class="en">In April 2018, the association partnered with accounting and corporate-audit firms, taking up support work for multinational companies — overseas incorporation, international accounting, customs procedures. It opened membership to independently self-employed people relocating abroad, accommodating dual-residence and person-based systems of registration. Surveys of freelancer economic zones and trends across the world's countries also began in this period. By April 2019, the association had extended into protecting the international patents and technology licenses of academic researchers and technology-patent developers, providing back-office support for personnel dispatched to overseas institutions and academic conferences, and handling sub-licensing work tied to the commercialization of patented technologies.</span>
+            <span class="jp">2018年4月、会計ファーム・企業監査ファームとの事業提携を開始し、多国籍企業への対応、海外起業・国際会計・通関業務の支援に着手した。独立自営業の海外移住者への会員制を開始し、二地域居住および属人制度への対応を進めている。世界各国のフリーランサーの生産経済圏・動向調査も、この時期に開始された。2019年4月には、学術研究者・開発特許技術者の国際特許・技術ライセンス保護を開始し、海外機関・学術会議等への人員派遣に関わるバックオフィス支援、技術特許の商用化・実用化に係る契約のサブライセンス業務にまで、活動範囲は拡大している。</span>
+          </div>
+        </details>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Chapter III -->
+<div class="chapter">
+  <div class="chapter-head">
+    <span class="chapter-num">III</span>
+    <div class="rank2">We Bridged the Gap<span class="jp">制度への橋を架けた</span></div>
+  </div>
+
+  <span class="src-tag archive">Archive Record</span>
+  <div class="rank3-block">
+    <ul>
+      <li>Responding to the pandemic, from 2019 onward
+        <span class="li-jp">2019年以降、感染症流行への対応</span>
+        <ul>
+          <li>Built medical-supply manufacturing lines
+            <span class="li-jp">医療物資の製造ライン構築</span>
+          </li>
+          <li>Supported import/export procedures for supplies
+            <span class="li-jp">物資輸出入の手続支援</span>
+          </li>
+          <li>Connected producers directly to distribution channels
+            <span class="li-jp">生産者への直接販売流通の紹介</span>
+          </li>
+          <li>Established food-transport routes
+            <span class="li-jp">食糧輸送経路の確立</span>
+          </li>
+          <li>Repurposed lodging facilities for mid-term stays
+            <span class="li-jp">宿泊機能の中期滞在型転用</span>
+          </li>
+        </ul>
+        <details class="detail-box">
+          <summary><span class="en">Testimony</span><span class="jp">当事者記録</span></summary>
+          <div class="detail-text tone-archive">
+            <span class="en">A record survives of the effort to determine, under movement restrictions, how far a network of members alone could sustain the basics of life — medicine, food, and shelter. For medical supplies then difficult to procure, such as Tyvek for protective gowns, raw material was sourced from an American manufacturer; with manufacturing in China closed off, a sewing line was built in Vietnam, where cutting and initial stitching took place before shipment to Japan, where a textile workshop in Tōhoku carried out final stitching and visual inspection before the goods were supplied to the Japanese government as emergency procurement. Elsewhere, when infections broke out aboard cruise ships, practicing physicians were dispatched to the scene; analysis of an authorized antigen-test kit distributed to insiders within the Chinese government — intended to detect the early viral strain believed to have leaked from a Chinese research institute — was obtained, and information on its repurposing was made available as an open resource. Lodging facilities left idle by the collapse of short-term tourism were converted instead into shelter for people unable to return home under travel bans, and for foreign nationals unable to leave Japan. This was not work that waited for a framework to be put in place; where someone stood in need in front of us, we took up what could be done.</span>
+            <span class="jp">移動が制限されるなかで、医・食・住という生活の根幹を、会員同士のネットワークだけでどこまで支えられるかを模索した記録が残っている。医療物資については、当時調達が困難とされた資材、例えば防護服の原料タイベックをアメリカ本国メーカーから調達し、製造の禁止された中国に代わってベトナムに縫製工場ラインを構築、裁断と基礎縫合までをベトナムで行い、日本へ輸送後、東北の縫製技術工房にて最終縫製と検品目視を経て、緊急調達品として日本政府に供出した。このほか、クルーズ船舶での感染症発生時には開業医師を現場へ派遣し、中国研究所からの漏洩による初期ウイルス株を検知する目的で、中国政府の内部関係者に配布された認定抗原キットの解析情報を入手し、その転用情報をオープンリソースとして提供した記録もある。稼働していない宿泊機能は、短期の観光利用ではなく、渡航禁止による帰国困難者、あるいは出国できない海外国籍者の一時滞在の受け皿へと役割を変えた。制度が整うのを待ってから動くのではなく、目の前で困っている人がいる以上、できることから手をつけたという性質の対応である。</span>
+          </div>
+        </details>
+      </li>
+      <li>Support for members
+        <span class="li-jp">会員支援</span>
+        <ul>
+          <li>Full waiver of administrative fees
+            <span class="li-jp">事務費用の全額減免</span>
+          </li>
+          <li>Redirected operations toward stabilizing life-support supply lines
+            <span class="li-jp">生活インフラ供給ラインの安定化へ業務転換</span>
+          </li>
+        </ul>
+        <details class="detail-box">
+          <summary><span class="en">Testimony</span><span class="jp">当事者記録</span></summary>
+          <div class="detail-text tone-archive">
+            <span class="en">The association stopped collecting administrative fees from members outright, redirecting most of its ordinary operations toward stabilizing life-support supply lines. On food, a mismatch between transport demand and supply meant that urban areas faced shortages of certain items while producing regions were discarding surplus locally; a new cell-preserving freezing technology was applied to bank the food, and routes for fresh transport were standardized using idle bullet-train and air-cargo capacity. On lodging, dormant facilities were leased under an overseas-condominium arrangement and kept available as restricted-stay housing for Japanese nationals unable to return under travel bans, for foreign nationals equally unable to leave Japan, and for members residing abroad. Every one of these costs was borne by the association itself; no economic burden was placed on those receiving the support or on the parties providing it. The judgment that people should be able to continue their lives came before any concern for the organization's own revenue — the accounts could be balanced later.</span>
+            <span class="jp">事務局の運営費用を会員から徴収することそのものをやめ、通常業務の大半を、生活インフラの供給ラインを安定させる作業に振り向けた。食糧については、輸送需要とのミスマッチにより都市部では品目が逼迫する一方、産地では現地破棄されている状況があったため、新技術による細胞破損の起きない冷凍バンク化を行い、空いていた新幹線便や空路便を利用した生鮮輸送の経路を規格化した。宿泊機能については、停止していた宿泊機関を海外コンドミニアム方式で借り上げ、渡航禁止により帰国できない日本国籍者、および同様に日本から出国できない海外国籍者、海外在留会員のための制限滞在施設として提供を続けた。これらの費用はすべて本会からの供出であり、当事者や供出先に経済的負担を求めていない。組織を維持するための収益活動よりも、目の前の人が生活を続けられることを優先するという判断が先にあり、収支上の帳尻は後から合わせればよいという考え方に基づいている。</span>
+          </div>
+        </details>
+      </li>
+      <li>Technology development: a blockchain-based system for calculating international compensation standards
+        <span class="li-jp">技術開発：ブロックチェーンによる国際報酬体系算出システム</span>
+        <details class="detail-box">
+          <summary><span class="en">Testimony</span><span class="jp">当事者記録</span></summary>
+          <div class="detail-text tone-archive">
+            <span class="en">To calculate fair compensation for members working across borders — independent of any single country's prices or exchange rates — development began on a system built on blockchain technology. At the time it was recorded, the system was not yet complete; it was documented as a work in progress, designed to withstand whatever institutional changes might follow.</span>
+            <span class="jp">国境を越えて働く会員の報酬水準を、国ごとの物価や為替に左右されずに公平に算定するため、ブロックチェーン技術を転用した仕組みの開発に着手した。開発時点では完成形ではなく、今後の制度変化にも耐えられるよう設計途上のものとして記録されている。</span>
+          </div>
+        </details>
+      </li>
+    </ul>
+  </div>
+
+  <span class="src-tag provided">Related Party / Supplemental</span>
+  <div class="rank4-block">
+    <ul>
+      <li>Responding to visa friction and stranded travelers
+        <span class="li-jp">現地ビザ摩擦・帰国困難への対応</span>
+        <ul>
+          <li>Brokered administrative communication between local authorities and Japan
+            <span class="li-jp">現地・日本間の事務連絡仲介</span>
+          </li>
+          <li>Negotiated on members' behalf with local authorities
+            <span class="li-jp">現地当局との交渉代行</span>
+          </li>
+        </ul>
+        <details class="detail-box">
+          <summary><span class="en">Testimony</span><span class="jp">当事者記録</span></summary>
+          <div class="detail-text tone-provided">
+            <span class="en">This was a period in which travelers abroad found themselves repeatedly unable to return home, as visa administration and the regulatory systems of individual countries grew unstable. The association functioned as a standing secretariat, bridging administrative communication between the field and Japan and negotiating directly with local authorities. Rather than wait for someone else's framework to arrive, this was a stretch of time spent in practical work, ensuring that no member was left isolated wherever they happened to be.</span>
+            <span class="jp">海外渡航者が現地から帰れなくなる事態が相次ぎ、現地のビザ運用や各国の制度そのものが不安定になった時期である。本会は、現地と日本の間で事務連絡をつなぐ役割、現地当局との交渉を代行する役割を、常設の事務局として担った。誰かが決めた制度の枠組みを待つのではなく、目の前の会員が現地で孤立しないよう、実務として動いた期間である。</span>
+          </div>
+        </details>
+      </li>
+      <li>Provided field data to shape domestic side-job deregulation
+        <span class="li-jp">国内副業解禁の制度設計に実態統計を提供</span>
+        <details class="detail-box">
+          <summary><span class="en">Testimony</span><span class="jp">当事者記録</span></summary>
+          <div class="detail-text tone-provided">
+            <span class="en">As public sentiment belatedly shifted toward deregulating side jobs and dual employment, and administrative bodies began designing the relevant systems, the association found itself positioned to supply the practical knowledge those bodies could not generate on their own — statistics on how things actually stood, working knowledge from the ground. It was a role of conveying the real circumstances of working people to those who were drafting the rules.</span>
+            <span class="jp">副業・ダブルワークの解禁が世論として後発的に高まり、行政各機関が制度の設計に着手した過程で、本会は実態としての統計や実務上の知見という、いわば現場の実体知を提供する立場にあった。制度を作る側が持ち得ない、実際に働く人々の状況を伝える役目である。</span>
+          </div>
+        </details>
+      </li>
+      <li>International economic support through a shared cryptocurrency
+        <span class="li-jp">共有暗号通貨による国際経済支援</span>
+        <ul>
+          <li>Zero operating costs, fees, and currency-exchange losses
+            <span class="li-jp">運営費用・手数料・為替損益　全てゼロ</span>
+          </li>
+          <li>Support for emergency funding and residency-status negotiation costs
+            <span class="li-jp">緊急資金調達・滞在資格折衝費用の支援</span>
+          </li>
+        </ul>
+        <details class="detail-box">
+          <summary><span class="en">Testimony</span><span class="jp">当事者記録</span></summary>
+          <div class="detail-text tone-provided">
+            <span class="en">During the pandemic, the association provided direct economic support for international transactions using a shared cryptocurrency held by its members. It reduced the fees charged for running the organization to zero, opened up the secretariat's own labor free of charge, and allowed no commission or currency-exchange loss to arise. The cryptocurrency the association held was circulated on the open market and applied to members' emergency funding needs, to the costs of negotiating residency status locally, and to the costs of extended stays abroad tied to travel delays. It was the result of a determined effort to let private mutual aid lead, ahead of any institutional backing.</span>
+            <span class="jp">コロナ期、会員向けに共有の暗号通貨を用いた国際商取引の経済支援を直接行った。組織運営のための費用徴収をゼロにし、事務局の作業そのものを無償で開放し、手数料や為替差損益も一切発生させない形をとった。組織が保有する共有暗号通貨を市場に流通させ、会員の緊急の資金調達、滞在資格に関する現地との折衝費用、渡航延長にともなう現地滞留費用の支援にあてた。民間の相互扶助を、制度上の裏付けを待たずに先行させることを徹底した結果である。</span>
+          </div>
+        </details>
+      </li>
+      <li>Humanitarian support
+        <span class="li-jp">人道支援</span>
+        <ul>
+          <li>Procured supplies for government medical institutions
+            <span class="li-jp">政府医療機関への物資調達</span>
+          </li>
+          <li>Covered members' hospitalization and repatriation costs
+            <span class="li-jp">会員の入院・帰国費用支援</span>
+          </li>
+          <li>Supported families left behind
+            <span class="li-jp">残留家族の生活支援</span>
+          </li>
+        </ul>
+        <details class="detail-box">
+          <summary><span class="en">Testimony</span><span class="jp">当事者記録</span></summary>
+          <div class="detail-text tone-provided">
+            <span class="en">Emergency supplies were procured for government medical institutions, and imports and production channels from abroad were handed over — the association's own assets, put toward humanitarian support. Members' own hospitalization and repatriation costs, and support for the education and daily life of families remaining in Japan, were also handled individually by the secretariat during this period. Every one of these costs came from the association's own resources; no economic burden was placed on those it helped. In matters of urgency and humanity, there are moments when something exceeds institutions and politics altogether, appearing as an act beyond the ordinary bounds of law — and that act must be judged right regardless of origin or institutional design. We did no more than act on what seemed right, holding to the belief that human society comes before any legal framework not yet in place.</span>
+            <span class="jp">政府の医療機関に対する緊急物資の調達、海外からの輸入・生産経路の引き渡しなど、団体として保有する資産を人道支援に供出した。会員本人の入院費用や帰国費用、日本国内に残る家族の学習・生活の支援についても、事務局として個別に対応した期間である。これらの費用は、いずれも本会からの供出によるものであり、当事者や供出先に経済的負担を求めていない。緊急性と人道性において、制度や政治を超える瞬間が超法規的措置として現れることがある。それは、あらゆる出自や制度設計を超えて正しいと判断されるべきものであり、法的な制度の枠組みが整うより先に、人間社会を優先するという組織の信念に基づいて、正しいと思えることをそのまま実行したにすぎない。</span>
+          </div>
+        </details>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Chapter IV -->
+<div class="chapter" style="border-bottom:none">
+  <div class="chapter-head">
+    <span class="chapter-num">IV</span>
+    <div class="rank2">We Return to the Origin<span class="jp">原点へ回帰する</span></div>
+  </div>
+
+  <span class="src-tag archive">Archive Record</span>
+  <div class="rank3-block">
+    <ul>
+      <li>November 2024 — the new Freelance Act took effect
+        <span class="li-jp">2024年11月　フリーランス新法 施行</span>
+      </li>
+      <li>January 2026 — the Shu-teki-hō (revised Subcontract Act) took effect
+        <span class="li-jp">2026年1月　取適法（改正下請法）施行</span>
+      </li>
+    </ul>
+  </div>
+
+  <span class="src-tag provided">Related Party / Supplemental</span>
+  <div class="rank4-block">
+    <ul>
+      <li>The scope the domestic framework actually governs
+        <span class="li-jp">国内フレームの管掌範囲</span>
+        <ul>
+          <li>Up to roughly the income level of a sole proprietor incorporating
+            <span class="li-jp">個人事業主の法人化程度の所得規模まで</span>
+          </li>
+        </ul>
+        <details class="detail-box">
+          <summary><span class="en">Testimony</span><span class="jp">当事者記録</span></summary>
+          <div class="detail-text tone-provided">
+            <span class="en">With a postwar-era revision to the Subcontract Act and legislation built on an expanded reading of the Antimonopoly Act, Japan's domestic legal groundwork reached a resting point. What this framework can actually govern extends only up to roughly the income level of a sole proprietor incorporating — no more than a first step toward the fluidity that side-job deregulation in corporate employment is meant to bring, moving away from employment built around lifetime tenure.</span>
+            <span class="jp">下請法の戦後改正における見直しと、独占禁止法の解釈拡大による立法をもって、国内の法令整備は一区切りを迎えた。この規定が実際に管掌し得るのは、個人事業主の法人化程度までの所得規模であり、企業雇用における副業解禁が、終身設計を前提とした雇用形態から流動性の高い働き方へと向かう、あくまでその初手の整備にすぎない。</span>
+          </div>
+        </details>
+      </li>
+      <li>Territory the debate never anticipated
+        <span class="li-jp">想定外だった領域</span>
+        <ul>
+          <li>Economic security and security clearance
+            <span class="li-jp">経済安全保障・セキュリティクリアランス</span>
+          </li>
+          <li>Protection of critical know-how
+            <span class="li-jp">クリティカルノウハウの保護</span>
+          </li>
+          <li>Negotiation and management concerning holders of international patents and sought-after technology
+            <span class="li-jp">国際特許・技術誘致対象人物の折衝管理</span>
+          </li>
+        </ul>
+        <details class="detail-box">
+          <summary><span class="en">Testimony</span><span class="jp">当事者記録</span></summary>
+          <div class="detail-text tone-provided">
+            <span class="en">The discussion now surrounding economic security — what gets called security clearance — concerns an upper stratum of freelance work altogether: protecting critical know-how, managing the protection and negotiation surrounding people who hold international patents or are targets of technology recruitment. None of this was even imagined within the scope of the domestic legislative debate. What the word "freelance" is taken to mean within Japan, and what economic security is meant to govern, were never standing on the same ground to begin with.</span>
+            <span class="jp">経済安全保障、いわゆるセキュリティクリアランスとして扱われるような、フリーランスの上位階層への議論——クリティカルノウハウの保護、国際特許・技術誘致の対象となる人物像への保護や折衝の管理——は、この制度設計の議論の想定にすら入っていなかった。日本国内でのフリーランスという言葉が指し示す範囲の議論と、経済安全保障が扱う範囲の議論は、そもそも同じ土俵に乗っていない。</span>
+          </div>
+        </details>
+      </li>
+      <li>What the association has actually carried out: direct support and international negotiation in that territory
+        <span class="li-jp">本会が担ってきた実務：上記領域への直接支援・国際折衝</span>
+        <details class="detail-box">
+          <summary><span class="en">Testimony</span><span class="jp">当事者記録</span></summary>
+          <div class="detail-text tone-provided">
+            <span class="en">Understanding this urgency and importance in depth, through the actual movement of people during the pandemic, and carrying out direct dealings and international negotiation with those we supported — that, and nothing less, was the association's real work through the bridge we built toward the institutions and the return to our origin that followed. If the conclusion of the domestic debate settles at nothing more than a partial supplement to income within Japan's labor mobility, we do not find great significance in that fact by itself. Whether the Japanese government's progress on legal interpretation and institutional design during this period connects to us as a matter of lineage is left to each reader's own interpretation.</span>
+            <span class="jp">この緊急性と重要性を、コロナ期の実際の往来のなかで深く理解し、支援対象との直接のやりとり、国際的な折衝を務めてきたことこそが、制度への橋渡しから原点回帰に至るまでの、本会の実質的な活動だった。日本国内での労働流動の一部所得補完の程度に議論の結論が収まるのであれば、そのこと自体に大きな意義を感じているわけではない。日本政府がこの期間を法令解釈と制度設計に進められた事実が、系譜として繋がっているのかは、各自の解釈に委ねる。</span>
+          </div>
+        </details>
+      </li>
+    </ul>
+  </div>
+
+  <div class="rank5">
+    <span class="label">Interpretation</span>
+    <span class="en">Side-job support — what has come to be defined in Japan specifically as parallel work — and related ventures that turn welfare benefits for sole proprietors into insurance products are not this association's purpose or origin. This association exists so that members provide mutual benefit to one another first; it does not ask members for economic contributions to sustain the organization itself. On this point, we align with the position taken, within Japan's legislative process, by the political figures who argued that those who assert a right must bear its cost. But we promise that this association will offer no cooperation whatsoever to Japan's invoice registration system — a legal rule introduced squarely against those who once negotiated the price of that small right.</span>
+    <span class="jp">副業対応（パラレルワークと日本独自に定義されたもの）や、個人事業主への福利厚生を保険商品化した関連事業は、本会の趣旨や出自ではありません。本会は、会員への互恵を会員自身が先行して提供するものであり、組織維持のために会員自身からの経済的供出を求めることはありません。日本の法令制度設計プロセスにおいて「権利を主張するものは、対価を支払わねばならない」と発言した政治関係者側の主張を指示します。些末な権利の対価を交渉した当事者に向けて導入された、インボイス制度という日本法令ルールにおいて、本会の一切は協力しないことを約束します。</span>
+  </div>
+</div>
+
+<div class="commitments">
+  <div class="rank2">A Promise to the Future<span class="jp">未来への約束</span></div>
+  <ul class="commit-list">
+    <li>
+      <span class="idx">01</span>
+      <span>
+        <span class="en">Economic security, critical know-how, international patents — and, beyond these, protection programs for the individuals involved. We promise, forever into the future, to keep placing what is right for a human being first.</span>
+        <span class="li-jp">経済安全保障、クリティカルノウハウ、国際特許のみならず当事者の保護プログラムなど、これからも「人間としての」在るべき姿を優先し続けることを未来永劫に約束します。</span>
+      </span>
+    </li>
+    <li>
+      <span class="idx">02</span>
+      <span>
+        <span class="en">Where rules as an institution become a wall, where borders as a matter of politics become a barrier to the basis of someone's life — we promise, forever into the future, to keep practicing mutual aid across that line.</span>
+        <span class="li-jp">「制度としての」ルールが障壁となる瞬間と、「政治としての」国境が生活基盤の障壁となる境界線を越えた、相互扶助の実践を続けることを未来永劫に約束します。</span>
+      </span>
+    </li>
+    <li>
+      <span class="idx">03</span>
+      <span>
+        <span class="en">To negotiate as those acting in good faith. To give support, wherever we have something to give.</span>
+        <span class="li-jp">善き者としての交渉、持てるものであるならば与える支援を。</span>
+      </span>
+    </li>
+    <li>
+      <span class="idx">04</span>
+      <span>
+        <span class="en">We will turn away those who take and those who deceive, stand firm against those who steal, and keep pursuing independence as a human society, and a freedom worth its responsibility — forever into the future.</span>
+        <span class="li-jp">奪うものと騙すものを排除し、盗むものに毅然と立ち向かい、人間社会としての独立性と、責任ある自由を追い求め続けることを未来永劫に約束します。</span>
+      </span>
+    </li>
+  </ul>
+</div>
+
+<div class="archive-entry">
+  <div class="rank2">Former Site Archive<span class="jp">アーカイブ</span></div>
+  <div class="rank5">
+    <span class="label">Note</span>
+    <span class="en">Records of the former site, operated from 2009 to 2022. Viewing only — no path leads to inquiries or to external member sites.</span>
+    <span class="jp">2009年〜2022年運用の旧サイト記録。閲覧専用。問合せ・外部会員サイトへの導線は含まない。</span>
+  </div>
+  <div class="action-row">
+    <button class="action-btn" id="archive-open">
+      <span class="en">Open Archive</span>
+      <span class="jp">アーカイブを開く</span>
+    </button>
+  </div>
+</div>
+
+<footer>
+  <span class="en">Details of legal status and registration are available on separate request.</span>
+  <span class="jp">法人格・登記事項の詳細は、別途照会先を参照のこと。</span>
+</footer>
+
+<div id="archive-modal">
+  <div class="modal-box">
+    <h3>Former Site Archive<span class="jp-inline">／旧サイト・アーカイブ</span></h3>
+    <div id="archive-modal-content"></div>
+    <button class="close-btn" onclick="document.getElementById('archive-modal').classList.remove('open')">Close ／ 閉じる</button>
+  </div>
+</div>
+
+<script>
+let archiveData = {};
+fetch('archive_data.json').then(r => r.json()).then(data => { archiveData = data; }).catch(() => {});
+
+document.getElementById('archive-open').addEventListener('click', () => {
+  const modal = document.getElementById('archive-modal');
+  const content = document.getElementById('archive-modal-content');
+  let html = '';
+  const allPages = [1,3,4,5,12,16];
+  let found = false;
+  allPages.forEach(pid => {
+    (archiveData[pid] || []).forEach(text => {
+      found = true;
+      html += `<div class="archive-item"><div class="meta">page ${pid}</div><p>${text}</p></div>`;
+    });
+  });
+  if (!found) html = '<p style="color:var(--ink-soft);font-size:0.85rem">archive_data.json を同階層に配置してください。</p>';
+  content.innerHTML = html;
+  modal.classList.add('open');
+});
+
+// ============ 言語切替（EN / JP） ============
+function setLang(lang){
+  document.querySelectorAll('.jp, .jp-inline, span.li-jp').forEach(el => {
+    el.style.display = (lang === 'jp') ? '' : (el.classList.contains('li-jp') ? 'block' : '');
+  });
+  document.querySelectorAll('.en').forEach(el => {
+    el.style.display = (lang === 'jp') ? 'none' : '';
+  });
+  document.querySelectorAll('.lang-btn[data-lang]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  document.documentElement.lang = lang;
+}
+
+document.querySelectorAll('.lang-btn[data-lang]').forEach(btn => {
+  btn.addEventListener('click', () => setLang(btn.dataset.lang));
+});
+
+// ============ 第三言語（外部翻訳サービスへの導線） ============
+document.getElementById('lang-more-btn').addEventListener('click', () => {
+  const url = 'https://translate.google.com/translate?sl=en&u=' + encodeURIComponent(location.href);
+  window.open(url, '_blank', 'noopener');
+});
+</script>
+
+</body>
+</html>
