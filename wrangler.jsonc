@@ -24,13 +24,19 @@
   //     (adelaide.ns.cloudflare.com / fattouche.ns.cloudflare.com) に
   //     切り替わっている状態
   // であることを前提とした設定。
+  //
+  // 注意：Custom Domain（custom_domain: true）方式では、
+  //       パターンはドメイン名のみを指定する。
+  //       ワイルドカード（/*）やパス指定を含めると
+  //       "Wildcard operators (*) are not allowed in Custom Domains"
+  //       というビルドエラーになる。
   "routes": [
     {
-      "pattern": "freelance-association.org/*",
+      "pattern": "freelance-association.org",
       "custom_domain": true
     },
     {
-      "pattern": "www.freelance-association.org/*",
+      "pattern": "www.freelance-association.org",
       "custom_domain": true
     }
   ]
