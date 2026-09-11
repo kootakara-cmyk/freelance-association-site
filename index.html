@@ -434,6 +434,8 @@
   }
   .action-btn:hover{ background:var(--sky-pale); }
   .action-btn .jp{ font-size:0.72rem; font-family:var(--font-sans); color:var(--ink-faint); }
+  .action-btn.accent{ border-color:var(--noble-gold); color:var(--noble-gold); }
+  .action-btn.accent:hover{ background:#F7EFDD; }
 
   footer{
     max-width:680px;
@@ -444,7 +446,7 @@
   }
 
   /* ============ MODAL ============ */
-  #archive-modal{
+  #archive-modal, #abroad-modal{
     display:none;
     position:fixed;
     inset:0;
@@ -454,7 +456,7 @@
     justify-content:center;
     padding:1.5rem;
   }
-  #archive-modal.open{ display:flex; }
+  #archive-modal.open, #abroad-modal.open{ display:flex; }
   .modal-box{
     background:var(--bg-panel);
     border:1px solid var(--border);
@@ -466,6 +468,60 @@
     padding:2rem 1.75rem;
   }
   .modal-box h3{ font-family:var(--font-serif); font-size:1.05rem; margin-bottom:1.2rem; }
+
+  /* ============ ABROAD MODAL：同意・オプトインフォーム ============ */
+  .abroad-section{
+    text-align:left;
+    margin-bottom:1.3rem;
+    padding-bottom:1.3rem;
+    border-bottom:1px dotted var(--border);
+  }
+  .abroad-section p{
+    font-size:0.86rem;
+    line-height:1.9;
+    margin-bottom:0.6rem;
+  }
+  .abroad-section p.en{ color:var(--ink); }
+  .abroad-section p.jp{ color:var(--ink-faint); font-size:0.84rem; }
+  .abroad-section.legal{ background:var(--bg); padding:1rem 1.1rem; border-radius:4px; border-bottom:none; }
+  .abroad-section .label-line{
+    font-family:var(--font-mono);
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:var(--ink-faint);
+    margin-bottom:0.6rem;
+  }
+  .abroad-section .label-line .jp{ display:block; font-family:var(--font-sans); text-transform:none; font-size:0.78rem; margin-top:2px; }
+
+  #abroad-form{ text-align:left; }
+  .field-label{
+    display:block;
+    font-size:0.8rem;
+    color:var(--ink-soft);
+    margin-bottom:0.4rem;
+  }
+  .field-label .jp{ display:block; font-size:0.78rem; color:var(--ink-faint); }
+  #abroad-email{
+    width:100%;
+    padding:10px 12px;
+    border:1px solid var(--border);
+    border-radius:3px;
+    background:var(--bg);
+    color:var(--ink);
+    font-size:0.9rem;
+    margin-bottom:1.2rem;
+    font-family:var(--font-sans);
+  }
+  .checkbox-line{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    font-size:0.84rem;
+    cursor:pointer;
+  }
+  .checkbox-line input{ margin-top:3px; }
+  .checkbox-line .jp{ display:block; color:var(--ink-faint); font-size:0.82rem; margin-top:2px; }
   .archive-item{
     background:var(--bg);
     border:1px solid var(--border);
@@ -883,6 +939,10 @@
       <span class="en">Open Archive</span>
       <span class="jp">アーカイブを開く</span>
     </button>
+    <button class="action-btn accent" id="abroad-open">
+      <span class="en">International: Toward an Open Frontier</span>
+      <span class="jp">国際：自由で開かれた先へ</span>
+    </button>
   </div>
 </div>
 
@@ -896,6 +956,69 @@
     <h3>Former Site Archive<span class="jp-inline">／旧サイト・アーカイブ</span></h3>
     <div id="archive-modal-content"></div>
     <button class="close-btn" onclick="document.getElementById('archive-modal').classList.remove('open')">Close ／ 閉じる</button>
+  </div>
+</div>
+
+<div id="abroad-modal">
+  <div class="modal-box">
+    <h3>International: Toward an Open Frontier<span class="jp-inline">／国際：自由で開かれた先へ</span></h3>
+
+    <div class="abroad-section">
+      <p class="en">This site preserves the historical record of the former Japan Freelance Association. The organization's substantive work has moved beyond the scope this domain name represents — the redesign of labor systems within Japan — into the protection of international patents, critical know-how, and negotiation on behalf of the particular individuals who actually hold or develop that upper stratum.</p>
+      <p class="jp">本サイトは、旧・日本フリーランス協会の活動記録を保存するアーカイブです。本会の実質的な活動は、このドメイン名が示す「日本における労働制度の再設計」の範囲を越え、国際特許の保護・クリティカルノウハウ・その上位層を実際に保有または開発している特殊個人のための折衝へと移行しています。</p>
+    </div>
+
+    <div class="abroad-section">
+      <p class="en">If you once held an address issued under this domain, you may choose to migrate your registration to the new host. If you are a third party interested in contact or participation, you may leave an address below, and the new host will send you information about an environment for free and open activity.</p>
+      <p class="jp">かつて本ドメイン発行のアドレスをお持ちだった方は、移行先での登録をご希望いただけます。接触や参加をご希望の第三者の方も、下記にアドレスをご記入いただければ、移行先の活動主体から「自由で開かれた活動ができる環境」への、ご案内をお送りします。</p>
+    </div>
+
+    <div class="abroad-section">
+      <p class="en">What you submit below is received not as a mere inquiry, but as a single resource — an item of intellectual property — given its own origin and provenance, and handled within the recording, observation, and connection framework the new host defines.</p>
+      <p class="jp">以下でご記入いただく内容は、単なる問合せとしてではなく、由来と経緯を与えた、ひとつの資源（知財）として、移行先が定める記録・観察・接続の仕組みのなかで扱われます。</p>
+    </div>
+
+    <div class="abroad-section">
+      <p class="label-line">
+        <span class="en">Purpose of the new host</span>
+        <span class="jp">移行先の目的</span>
+      </p>
+      <p class="en">Not only within Japan, but under international rules and local politics, an artificial intelligence draws out — from the open net — the closest, fastest, and most fair balance for social implementation. Human beings themselves then take responsibility for the physical negotiation and real-world work that follows. The foremost purpose is to offer participants an environment and concrete means for free and open activity, unconstrained by any particular position or interest.</p>
+      <p class="jp">日本のみならず、国際ルールと現地政治にて、より近く、より速く、最も公正な社会実装のバランスを「オープンネットから」人工知能が導き出し、その現実の「物理的な折衝や、リアルな作業」を人間自身が責任を持ち、自由で開かれた活動の環境と具体策を「特定の立場や利害に組み敷かれることなく」参画者に提供することを最大の目的にしています。</p>
+    </div>
+
+    <div class="abroad-section legal">
+      <p class="label-line">
+        <span class="en">On the handling of personal information</span>
+        <span class="jp">個人情報の取扱について</span>
+      </p>
+      <p class="en">The email address you provide, if any, is used solely to send information about this transition and the new host's activities. It is not provided to third parties beyond the new host itself. Providing an address is entirely optional; you may proceed without one.</p>
+      <p class="jp">ご記入いただくメールアドレスは、本移行および移行先の活動に関するご案内の送付にのみ使用します。移行先の活動主体以外の第三者への提供は行いません。ご記入は任意であり、未記入のまま進むこともできます。</p>
+    </div>
+
+    <form id="abroad-form">
+      <label class="field-label">
+        <span class="en">Email address (optional)</span>
+        <span class="jp">メールアドレス（任意）</span>
+      </label>
+      <input type="email" id="abroad-email" placeholder="you@example.com" autocomplete="email">
+
+      <label class="checkbox-line">
+        <input type="checkbox" id="abroad-consent" required>
+        <span>
+          <span class="en">I have read the above and agree to proceed.</span>
+          <span class="jp">上記を読み、同意のうえ進みます。</span>
+        </span>
+      </label>
+
+      <div class="action-row" style="margin-top:1.2rem">
+        <button type="submit" class="action-btn accent">
+          <span class="en">Agree and Continue</span>
+          <span class="jp">同意して進む</span>
+        </button>
+        <button type="button" class="close-btn" onclick="document.getElementById('abroad-modal').classList.remove('open')">Cancel ／ 取消</button>
+      </div>
+    </form>
   </div>
 </div>
 
@@ -918,6 +1041,91 @@ document.getElementById('archive-open').addEventListener('click', () => {
   if (!found) html = '<p style="color:var(--ink-soft);font-size:0.85rem">archive_data.json を同階層に配置してください。</p>';
   content.innerHTML = html;
   modal.classList.add('open');
+});
+
+// ============ 国際：自由で開かれた先へ：同意・オプトインモーダル ============
+// MUKΕIBUTSU RESOURCE PROTOCOL (MRP) v0.3 準拠。
+// このフォームの送信自体を「MRP-01: RESOURCE_ARRIVED」相当の
+// リクエストとして扱い、mukeibutsu.biz の Intake API に投入する。
+//
+// 遷移先・エンドポイントは未確定のためプレースホルダー。確定次第、この値を差し替える。
+const ABROAD_DESTINATION_URL = 'https://mukeibutsu.biz/terminal';
+const ABROAD_INTAKE_ENDPOINT = 'https://mukeibutsu.biz/api/v1/intake'; // 未確定。確定次第差し替え
+
+document.getElementById('abroad-open').addEventListener('click', () => {
+  document.getElementById('abroad-modal').classList.add('open');
+});
+
+// SHA-256ハッシュ生成（Web Crypto API、外部ライブラリ不要）
+async function sha256Hex(text) {
+  const enc = new TextEncoder().encode(text);
+  const digest = await crypto.subtle.digest('SHA-256', enc);
+  return Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// MK-YYYY-XXXXXX 形式のリソースIDを採番（クライアント側の仮採番。
+// サーバー側で正式なIDに置換される想定）
+function generateResourceId() {
+  const year = new Date().getFullYear();
+  const rand = Math.floor(100000 + Math.random() * 900000);
+  return `MK-${year}-${rand}`;
+}
+
+document.getElementById('abroad-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('abroad-email').value.trim();
+  const consent = document.getElementById('abroad-consent').checked;
+
+  if (!consent) return; // required属性でも防止されるが二重チェック
+
+  // ============ ImmutableResource 型への整形 ============
+  // rawContent には、個人情報そのもの（メールアドレス）を直接埋め込まず、
+  // 「このドメインからの移行意思表明」という事実を記述する。
+  // メールアドレスは別フィールド（contact）として分離して送る。
+  const rawContent = email
+    ? `Migration opt-in from freelance-association.org archive site. Contact address provided.`
+    : `Migration interest expressed from freelance-association.org archive site. No contact address provided.`;
+
+  const contentHash = await sha256Hex(rawContent + (email || '') + new Date().toISOString());
+  const resourceId = generateResourceId();
+
+  const immutableResource = {
+    resourceId: resourceId,
+    rawContent: rawContent,
+    contentHash: contentHash,
+    origin: {
+      sourceType: 'WEB',
+      sourceUrl: 'https://freelance-association.org',
+      sourceActor: email || 'anonymous',
+      importedAt: new Date().toISOString()
+    },
+    initialRights: {
+      declaredOwner: email || undefined,
+      rightsStatus: 'SELF_DECLARED',
+      reuseAllowed: true
+    }
+  };
+
+  // MRP-01: RESOURCE_ARRIVED として Intake API へ送信
+  if (ABROAD_INTAKE_ENDPOINT) {
+    try {
+      await fetch(ABROAD_INTAKE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          content: rawContent,
+          platform: 'API',
+          resource: immutableResource,
+          contact: email || null
+        })
+      });
+    } catch (err) {
+      // 送信失敗時も遷移自体は止めない（ユーザー体験を優先）
+      console.warn('MRP intake send failed', err);
+    }
+  }
+
+  window.location.href = ABROAD_DESTINATION_URL;
 });
 
 // ============ 言語切替（EN / JP） ============

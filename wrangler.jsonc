@@ -1,0 +1,37 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "freelance-association-site",
+  "compatibility_date": "2026-07-13",
+  "observability": {
+    "enabled": true
+  },
+
+  // ============ 静的アセット配信設定 ============
+  // このリポジトリのルート直下（index.html, archive_data.json 等）を
+  // そのまま静的サイトとして配信する。
+  "assets": {
+    "directory": "./",
+    "not_found_handling": "single-page-application"
+  },
+
+  // ============ カスタムドメインルーティング ============
+  // freelance-association.org 宛のすべてのリクエストを、
+  // この Worker（静的サイト配信）に対応させる。
+  //
+  // 前提：Cloudflareダッシュボード側で
+  //   - ドメイン freelance-association.org のレジストラ移管が完了済み（active）
+  //   - ネームサーバーが Cloudflare 側
+  //     (adelaide.ns.cloudflare.com / fattouche.ns.cloudflare.com) に
+  //     切り替わっている状態
+  // であることを前提とした設定。
+  "routes": [
+    {
+      "pattern": "freelance-association.org/*",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.freelance-association.org/*",
+      "custom_domain": true
+    }
+  ]
+}
